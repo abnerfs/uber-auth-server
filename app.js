@@ -69,10 +69,22 @@ app.get('/callback', (req, res) => {
                 expires_in,
                 refresh_token } = response;
 
-            res.send(response);
+            const meHeaders = new Headers();
+            meHeaders.append('Authorization', ' Bearer ' + access_token );
+            meHeaders.append('Content-Type', 'application/json');
+            
+            /* ME: https://developer.uber.com/docs/riders/references/api/v1.2/me-get */
+            fetch('https://api.uber.com/v1.2/me', {
+                method: 'GET',
+                headers: meHeaders
+            })
+            .then(responseMe => responseMe.json())
+            .then(responseMe => {
+                res.send(Object.assign(response, responseMe));
+            });
         })
         .catch(err => {
-
+            console.log(err);
         });
 });
 

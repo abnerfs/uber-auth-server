@@ -8,7 +8,8 @@ const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 8089;
 const client_id = process.env.UBER_ID;
 const client_secret = process.env.UBER_SECRET;
-const link = `http://localhost:${PORT}/`;
+const baseURL = process.env.BASEURL || 'http://localhost';
+const link = `${baseURL}:${PORT}/`;
 const redirect_uri = link + 'callback';
 const scope = "delivery history history_lite places profile";
 

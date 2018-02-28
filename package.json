@@ -5,6 +5,9 @@
   "repository": "https://github.com/abnerfs/uber-auth-server",
   "author": "AbNeR <abnerfs@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
